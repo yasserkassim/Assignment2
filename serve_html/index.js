@@ -11,11 +11,11 @@ db.once("open", () => {
     console.log("Successfully connected to MongoDB using Mongoose!");
 });
 
-const port = 3000,
-    homeController = require("./controllers/homeController"),
-    express = require("express"),
-    app = express();
+homeController = require("./controllers/homeController"),
+express = require("express"),
+app = express();
 
+app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname + "/public"));
@@ -54,6 +54,6 @@ app.post("/", (req, res) => {
     // console.log(req.query);
     res.send("POST Successful!");
 });
-app.listen(port, () => {
-    console.log(`The Express.js server has started and is listening on port number: ${port}`);
-})
+app.listen(app.get("port"), () => {
+    console.log(`The Express.js server has started and is listening on port number: ${app.get("port")}`);
+});
