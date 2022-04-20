@@ -4,7 +4,7 @@ module.exports = {
     index: (req, res) => {
         Books.find({}).then(books => {
             res.render("home", {
-                book: books
+                data: books
             });
         })
         .catch(error => {
@@ -46,5 +46,16 @@ module.exports = {
             console.log(`Error deleting book by Book Name: ${error.message}`);
             next();
         });
-    }
+    },
+    deleteBook: (req, res) => {
+        Books.find({}).then(books => {
+            res.render("deleteBook", {
+                data: books
+            });
+        })
+        .catch(error => {
+            console.log(`Error fetch books: ${error.message}`)
+            res.redirect("/home");
+        });
+    },
 }
