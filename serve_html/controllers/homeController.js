@@ -1,38 +1,9 @@
 const Books = require("../models/bookModels");
 
 exports.sendReqParam = (req, res) => {
-    let path = req.url;
-    if (path == '/home'){
-        Books.find( {}, (error, books) => {
-            if (!error) {
-                res.render("home", {data: books});
-            } else {
-                console.log('ERROR' + error);
-            }
-        });
-    }
-    else if (path == '/a2'){
-        res.sendFile(`./public/css/${path}.css`, {
+        res.sendFile(`./public/css/${req.url}.css`, {
             root: "./"
         });
-    }
-    else if (path == '/DeleteABook'){
-        Books.find( {}, (error, books) => {
-            if (!error) {
-                res.render("deleteBook", {data: books});
-            } else {
-                console.log('ERROR' + error);
-            }
-        });
-    }
-    else if (path == '/AddNewBook'){
-        res.render('addBook', {book: new Books()});
-    }
-    else if (path == '/test'){
-        res.sendFile(`./public/js/${path}.js`, {
-            root: "./"
-        });
-    }
 };
 exports.respondWithBook = (req, res) => {
     let bookNumber = req.params.bookNumber;
