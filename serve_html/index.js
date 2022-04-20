@@ -20,12 +20,8 @@ app.set("view engine", "ejs");
 
 app.use(express.static(__dirname + "/public"));
 
-app.get("/home", homeController.sendReqParam);
-app.get("/DeleteABook", homeController.sendReqParam);
-app.get("/AddNewBook", homeController.sendReqParam);
 app.get("/books/:bookNumber", homeController.respondWithBook);
 app.get("/a2", homeController.sendReqParam);
-app.get("/test", homeController.sendReqParam);
 
 const bodyParser = require('body-parser');
 const methodOverride = require("method-override");
@@ -35,7 +31,9 @@ app.use(methodOverride("_method", {methods: ["POST", "GET"]}));
 
 router = express.Router();
 app.use("/", router);
-router.get("/books/new", bookController.new);
+router.get("/home", bookController.index);
+router.get("/AddNewBook", bookController.new);
+router.get("/DeleteABook", bookController.deleteBook);
 router.post("/books/create", bookController.create, bookController.redirectView);
 router.delete("/books/:bookName/delete", bookController.delete, bookController.redirectView);
 
