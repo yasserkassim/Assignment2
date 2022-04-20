@@ -3,7 +3,7 @@ const Books = require("../models/bookModels");
 module.exports = {
     index: (req, res) => {
         Books.find({}).then(books => {
-            res.render("books/home", {
+            res.render("home", {
                 book: books
             });
         })
@@ -13,7 +13,7 @@ module.exports = {
         });
     },
     new: (req, res) => {
-        res.render("books/addBook");
+        res.render("addBook");
     },
     create: (req, res, next) => {
         let bookParams = {
