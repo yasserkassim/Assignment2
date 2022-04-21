@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2</title>
+    <link rel="stylesheet" href="/a2">
+</head>
+
+<body>
+    <div class="content">
+        <form action="/books/create" method="POST">
+            <h1>Add a new book</h1>
+            <label for="name">Name:</label><br>
+            <input type="text" name="bookName" id="name" placeholder="Name of Book" required><br>
+            <label for="author">Author Name:</label><br>
+            <input type="text" name="authorName" id="author" placeholder="Name of Author" required><br>
+            <label for="link">Amazon Link:</label><br>
+            <input type="text" name="buyLink" id="link" placeholder="Amazon Purchase Link" required><br>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+<footer>
+    <div class="nav">
+        <a href="/home">List of Books</a>
+        <span id="sep">|</span>
+        <a href="/AddNewBook">Add Book</a>
+        <span id="sep">|</span>
+        <a href="/DeleteABook">Delete A Book</a>
+    </div>
+</footer>
+
+</html>
